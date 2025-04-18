@@ -25,6 +25,16 @@ const FilterSidebar = ({
   setYearRange,
   resetFilters
 }: FilterSidebarProps) => {
+  const handleCategoryChange = (value: string) => {
+    setCategory(value);
+  };
+
+  const handleYearRangeChange = (values: number[]) => {
+    if (values.length === 2) {
+      setYearRange([values[0], values[1]]);
+    }
+  };
+
   return (
     <div className="bg-card p-6 rounded-lg border">
       <div className="flex items-center justify-between mb-4">
@@ -45,7 +55,7 @@ const FilterSidebar = ({
       <div className="space-y-6">
         <div>
           <label className="text-sm font-medium mb-2 block">Категория</label>
-          <Select value={category} onValueChange={setCategory}>
+          <Select value={category} onValueChange={handleCategoryChange}>
             <SelectTrigger>
               <SelectValue placeholder="Все категории" />
             </SelectTrigger>
@@ -82,11 +92,7 @@ const FilterSidebar = ({
             min={1980} 
             max={2024} 
             step={1}
-            onValueChange={(values) => {
-              if (Array.isArray(values) && values.length === 2) {
-                setYearRange([values[0], values[1]]);
-              }
-            }}
+            onValueChange={handleYearRangeChange}
           />
         </div>
       </div>

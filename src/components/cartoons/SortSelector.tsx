@@ -9,10 +9,14 @@ interface SortSelectorProps {
 }
 
 const SortSelector = ({ sortOption, onSortChange }: SortSelectorProps) => {
+  const handleValueChange = (value: string) => {
+    onSortChange(value as SortOption);
+  };
+
   return (
     <div className="flex items-center gap-2">
       <SlidersHorizontalIcon size={16} className="text-muted-foreground" />
-      <Select value={sortOption} onValueChange={onSortChange}>
+      <Select value={sortOption} onValueChange={handleValueChange}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Сортировка" />
         </SelectTrigger>
