@@ -68,7 +68,7 @@ const FilterSidebar = ({
             min={0} 
             max={5} 
             step={0.1} 
-            onValueChange={(value) => setMinRating(value[0])}
+            onValueChange={(values) => setMinRating(values[0])}
           />
         </div>
         
@@ -82,7 +82,11 @@ const FilterSidebar = ({
             min={1980} 
             max={2024} 
             step={1}
-            onValueChange={(value) => setYearRange(value as [number, number])}
+            onValueChange={(values) => {
+              if (Array.isArray(values) && values.length === 2) {
+                setYearRange([values[0], values[1]]);
+              }
+            }}
           />
         </div>
       </div>

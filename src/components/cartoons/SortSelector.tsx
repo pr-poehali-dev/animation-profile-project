@@ -12,7 +12,7 @@ const SortSelector = ({ sortOption, onSortChange }: SortSelectorProps) => {
   return (
     <div className="flex items-center gap-2">
       <SlidersHorizontalIcon size={16} className="text-muted-foreground" />
-      <Select value={sortOption} onValueChange={(value) => onSortChange(value as SortOption)}>
+      <Select value={sortOption} onValueChange={onSortChange}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Сортировка" />
         </SelectTrigger>
